@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Esqueleto WebAPP - Front-end HTML(ES6), Back-end Java(Spring)</title>
+    <link rel="icon" href="./imagens/favicon.png">
+
+
+    <!-- ******************** -->
+    <!-- Bibliotecas Externas -->
+    <!-- ******************** -->
+
+    <link href="/bibliotecas/jspanel/jspanel.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/bibliotecas/tabulator/js/tabulator.min.js"></script>
+    <link href="/bibliotecas/tabulator/css/tabulator_modern.min.css" rel="stylesheet">
+
+    <script src="/bibliotecas/w3/w3.js"></script>
+    <link href="/bibliotecas/w3/w3.css" rel="stylesheet">
+    <script src="/bibliotecas/jquery/jquery-3.3.1.min.js"></script>
+    <script src="/bibliotecas/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <link href="/bibliotecas/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <script src="/bibliotecas/jquery-resizable/jquery-resizable.js"></script>
+    <script src="/bibliotecas/moment.js/moment.min.js"></script>
+
+    <script src="/bibliotecas/vis.js/vis.js"></script>
+    <script src="/bibliotecas/vis.js/vis-timeline-graph2d.min.js"></script>
+    <link href="/bibliotecas/vis.js/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../bibliotecas/countdown.js/countdown_pt-br.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/imask"></script>
+
+    <link rel='stylesheet' href='/bibliotecas/leaflet/leaflet.css'>
+    <script src='/bibliotecas/leaflet/leaflet.js'></script>
+
+
+    <!--TODO: Classe de menu estava incluindo os JS e CSS abaixo mas se forem incluidos mais de uma vez o menu não funciona -->
+    <!--TODO: foi necessário incluir esses scripts e css na página principal mas não é uma boa prática pois os -->
+    <!--TODO: componentes devem ser "autossuficientes"-->
+    <!--script src="/bibliotecas/jquery/jquery-3.3.1.min.js"></script-->
+    <script src='/bibliotecas/bootstrap-4.5.3-dist/js/bootstrap.min.js'></script>
+    <link rel='stylesheet' href='/bibliotecas/bootstrap-4.5.3-dist/css/bootstrap.min.css'>
+
+    <!--TODO: Classe de menu estava incluindo os JS e CSS abaixo mas não achava o objeto ol -->
+    <!--TODO: foi necessário incluir esses scripts e css na página principal mas não é uma boa prática pois os -->
+    <!--TODO: componentes devem ser "autossuficientes"-->
+    <script src="/bibliotecas/openlayers/v6.4.3-dist/ol.js"></script>
+    <script>
+        //Mapeia imports do OpenLayers para poder usar os exemplos como no site (não usa ferramenta de build)
+        var Map                 = ol.Map;        //~ import Map from 'ol/Map.js';
+        var View                = ol.View;       //~ import View from 'ol/View.js';
+        var {easeIn, easeOut}   = ol.easing;     //~ import {easeIn, easeOut} from 'ol/easing.js';
+        var TileLayer           = ol.layer.Tile; //~ import TileLayer from 'ol/layer/Tile.js';
+        var {fromLonLat}        = ol.proj;       //~ import {fromLonLat} from 'ol/proj.js';
+        var OSM                 = ol.source.OSM; //~ import OSM from 'ol/source/OSM.js';
+        var VectorSource        = ol.source.Vector; //~ import VectorSource from 'ol/source/Vector';
+        var VectorLayer         = ol.source.Vector; //~ import VectorSource from 'ol/layer/Vector';
+        var Draw                = ol.interaction.Draw;
+    </script>
+    <link href="/bibliotecas/openlayers/v6.4.3-dist/ol.css" rel="stylesheet">
+
+
+
+
+    <!-- ******* -->
+    <!-- Estilos -->
+    <!-- ******* -->
+    <link href="/estilos.css" rel="stylesheet" type="text/css">
+
+
+    <script type="module">
+  		import { MenuView } from "/WebCommonsRFB/menu_view.js";
+		import { JanelasView } from "/WebCommonsRFB/janelas_view.js";
+		window.MenuView = MenuView;
+
+
+    </script>
+    <script>
+		window.onload = () => {
+			document.querySelector("menu-view").addEventListener("clicouItemMenu", evento => {
+				document.querySelector("janelas-view").criarPainel (evento.detail);
+			});
+		};
+
+    </script>
+</head>
+<body>
+    <div class="marcaDAgua"></div>
+    <menu-view src="./aplicacao.json"></menu-view>
+    <janelas-view></janelas-view>
+    <div class="conteinerDaPagina" id="principal">
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+Self Signed Root CA
+openssl req -x509 -sha256 -days 3650 -newkey rsa:4096 -keyout rootCA.key -out rootCA.crt
+
+openssl req: PKCS#10 certificate request and certificate generating utility.
+-x509: relaciona nome a chave pública, autenticação forte [ICP-Brasil utilizam­-se certificados no padrão X­.509 V3]
+-sha256:  secure hash algorithm de 256 bits
+-days 3650: certificado válido por 3650 dias ou 10 anos
+-newkey rsa:4096: cria um novo "certificate request" e uma nova chave privada usando o sistema de criptografia de chave pública RSA com uma chave de 4096 bits
+-keyout rootCA.ley: documento com a chave primária
+-out rootCA.crt: arquivo de saida com a chave pública
+
+
+
+
+
+
+
+Keystore
+
+
+Server-side Certificate
+openssl req -new -newkey rsa:4096 -keyout localhost.key –out localhost.csr
+
+sign the request with our rootCA.crt certificate and its private key
+openssl x509 -req -CA rootCA.crt -CAkey rootCA.key -in localhost.csr -out localhost.crt -days 365
+
+
+we finally have a ready to use localhost.crt certificate signed by our own certificate authority.
+openssl x509 -in localhost.crt -text
+
+
+ import the signed certificate and the corresponding private key to the keystore.jks file.
+ openssl pkcs12 -export -out localhost.p12 -name "localhost" -inkey localhost.key -in localhost.crt
+ 
+ create a keystore.jks repository and import the localhost.p12 file with a single command:
+ keytool -importkeystore -srckeystore localhost.p12 -srcstoretype PKCS12 -destkeystore keystore.jks -deststoretype JKS
+ 
+ 
+ 
+//Propriedades Spring 
+server.ssl.key-store=../store/keystore.jks
+server.ssl.key-store-password=${PASSWORD}
+server.ssl.key-alias=localhost
+server.ssl.key-password=${PASSWORD}
+server.ssl.enabled=true
+server.port=8443
+spring.security.user.name=Admin
+spring.security.user.password=admin
+
+
+
+ we need to install our generated root certificate authority as a trusted certificate in a browser.

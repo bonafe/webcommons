@@ -1,0 +1,126 @@
+/*********************************************************
+   Defini��o para considerar largura dos elementos como a
+   largura do conte�do mais a largura das margens
+   internas (margin) e externas (padding)
+*********************************************************/
+*{
+  box-sizing: border-box;
+}
+
+
+
+/*********************************************************
+   Cores
+*********************************************************/
+:root{
+	
+	--branco: white;
+	
+	--verde_bandeira_claro: rgb(159,255,200);
+	--verde_bandeira: rgb(0,146,63);
+	--verde_bandeira_escuro: rgb(0,104,45);
+	
+	--amarelo_bandeira_claro: rgb(255, 228, 136);
+	--amarelo_bandeira: rgb(248,195,0 );
+	--amarelo_bandeira_escuro: rgb(200,155,0);
+	
+	--azul_bandeira_claro: rgb(174,159,236);
+	--azul_bandeira: rgb(40,22,111);
+	--azul_bandeira_escuro: rgb(26,14,71);
+	
+	--azul_logo_aduana: rgb(0, 41, 105);
+	--amarelo_logo_aduana: rgb(255,204,103);
+	--vermelho_logo_aduana: rgb(235, 109, 68);
+	
+	--azul_fundo_sitio_receita: rgb(22, 89, 191);
+	--azul_fundo_menu_sitio_receita: rgb(15, 64, 152);
+	--fundo_painel_1_sitio_receita: rgb(71, 109, 170);
+	--fundo_painel_2_sitio_receita: rgb(26, 136, 170);
+	--fundo_painel_3_sitio_receita: rgb(36, 166, 102);
+	
+	--fundo_azul_escuro_padrao: rgb(0,41,105);
+}
+
+
+/*********************************************************
+   html e body
+*********************************************************/		
+html, body{		
+	height: 100%;	
+	background-color: var(--fundo_azul_escuro_padrao);
+	color:white;
+	font-family: sans-serif;
+}
+
+.marcaDAgua{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	opacity: 0.1;
+	background-image: url("/imagens/marca_dagua.jpg");
+	background-repeat: no-repeat;
+  	background-attachment: fixed; 
+  	background-size: cover;
+}
+
+/*********************************************************
+   Geral
+*********************************************************/	
+a{
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--branco);
+}
+
+a:hover{
+	color: var(--amarelo_logo_aduana);
+}
+
+/*********************************************************
+   Conteiner da P�gina
+*********************************************************/		
+.conteinerDaPagina{
+	position: absolute;
+	top: 50px;
+}
+
+#botaoMenu{
+	position: fixed;
+	width: 55px;
+	padding: 3px;
+  	background-color: lightgrey;
+  	border-bottom-right-radius: 25px;
+  	z-index: 10;
+}
+
+
+
+/*********************************************************
+   Link de Download
+*********************************************************/	
+
+.linkDeDownload{
+	padding: 3px;
+	color: orange;
+	cursor: pointer;
+}
+
+/* unvisited link */
+.linkDeDownload:link {
+  color: orange;
+}
+
+/* visited link */
+.linkDeDownload:visited {
+  color: orange;
+}
+
+/* mouse over link */
+.linkDeDownload:hover {
+  color: blue;
+}
+
+/* selected link */
+.linkDeDownload:active {
+  color: blue;
+}

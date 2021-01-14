@@ -1,0 +1,57 @@
+{
+  "informacoes": {
+    "nome": "Esqueleto WebAPP",
+    "sigla": "EsqueletoWebAPP",
+    "descricao": "Esqueleto para aplicações web: Front-end HTML(ES6), Back-end Java(Spring)",
+    "profile": "@spring.profiles.active@"
+  },  
+  "menus": [   
+    {
+      "nome": "Sistema",
+      "filhos": [
+        {
+          "nome": "Usuários e Autorizações",
+          "modulo": "/modulos/sistema/usuario/usuarios_view.js",
+          "componente": "usuarios-view",
+          "habilitado": "true",
+          "navegacao": [
+            {
+              "evento": "exibirDetalhe",
+              "nome": "Usuário",
+              "modulo": "/modulos/sistema/usuario/usuario_view.js",
+              "componente": "usuario-view",
+              "eventoRetorno": "atualizar",
+              "funcaoRetorno": "atualizar"
+            }
+          ]
+        },
+        {
+          "nome": "Módulos",
+          "modulo": "/modulos/sistema/modulo/modulos_view.js",
+          "componente": "modulos-view",
+          "habilitado": "true",
+          "navegacao": [
+            {
+              "evento": "exibirDetalhe",
+              "nome": "Módulo",
+              "modulo": "/modulos/sistema/modulo/modulo_view.js",
+              "componente": "modulo-view",
+              "eventoRetorno": "atualizar",
+              "funcaoRetorno": "atualizar",
+              "navegacao": [
+                {
+                  "evento": "exibirPermissao",
+                  "nome": "Permissão",
+                  "modulo": "/modulos/sistema/permissao/permissao_view.js",
+                  "componente": "permissao-view",
+                  "eventoRetorno": "atualizarPermissao",
+                  "funcaoRetorno": "atualizarPermissao"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
